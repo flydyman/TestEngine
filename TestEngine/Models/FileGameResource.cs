@@ -9,10 +9,18 @@ namespace TestEngine.Models
     {
         Raw,
         Text,
-        Texture
+        Texture,
+        Explanator
     }
-    public class FileGameResource
+    public class FileGameResource<T> where T: class
     {
-        
+        public T Data{get; private set;}
+        public FileGameType FileType {get; private set;}
+
+        public FileGameResource(FileGameType fileType, T data)
+        {
+            FileType = fileType;
+            Data = data;
+        }
     }
 }
