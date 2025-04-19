@@ -10,7 +10,7 @@ namespace TestEngine.Models
         public Node? Parent {get;set;} = null;
         public List<Node> Children = new List<Node>();
         public string Name{get;set;}
-        public int Order {get;set;}
+        public int Order {get;set;} = 0;
         bool _isDisposed = false;
 
         public abstract void OnLoad();
@@ -44,6 +44,13 @@ namespace TestEngine.Models
         public void AddChild(Node child)
         {
             child.Parent = this;
+            if (child.Order <= 0)
+            {
+                SortChildren();
+                Node? n = Children.LastOrDefault();
+                int order = n==null ? n.Order: 0;
+                child.Order = order + 1;
+            }
             Children.Add(child);
         }
 
