@@ -16,6 +16,11 @@ namespace TestEngine.Models
             Name = name;
         }
 
+        public void Draw()
+        {
+            MainNode.ExplicitDraw();
+        }
+
         public virtual void Dispose(bool dispose)
         {
             if(!_isDisposed)

@@ -19,6 +19,8 @@ public class Engine: GameWindow
         base.OnUpdateFrame(args);
         GL.Clear(ClearBufferMask.ColorBufferBit);
 
+        // Call Draw here
+
         SwapBuffers();
     }
 

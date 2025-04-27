@@ -4,6 +4,7 @@ Building over dotnet ``net-8.0``
 Nuget packages in use:
 - Dapper
 - OpenTk
+- Sixlabors.ImageSharp
 
 Make sure packages is in system:
 - Mesa

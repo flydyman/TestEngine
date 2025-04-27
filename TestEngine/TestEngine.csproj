@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="dapper" Version="2.1.66" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.8" />
   </ItemGroup>
 
 </Project>

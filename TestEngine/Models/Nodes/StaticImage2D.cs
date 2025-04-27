@@ -7,19 +7,26 @@ namespace TestEngine.Models.Nodes
 {
     public class StaticImage2D : Node2D
     {
+        
         public override void Draw()
         {
-            //throw new NotImplementedException();
+            if (IsVisible && IsActive)
+            {
+                // Draw here
+            }
         }
 
         public override void OnLoad()
         {
-            //throw new NotImplementedException();
+            // Load resource here
         }
 
         public override void OnUpdate()
         {
-            //throw new NotImplementedException();
+            if (IsActive)
+            {
+                // Action handler here
+            }
         }
     }
 }
