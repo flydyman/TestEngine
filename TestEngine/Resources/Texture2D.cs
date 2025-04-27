@@ -81,6 +81,11 @@ void main()
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
 
+            // Add transparent to PNG
+            // TODO check how it works with other formats, f.e. BMP or PCX
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+
             Image<Rgba32> img = Image.Load<Rgba32>(filename);
             Width = img.Width;
             Height = img.Height;
