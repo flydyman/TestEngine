@@ -2,6 +2,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TestEngine\TestEngine.csproj" />
+    <ContentWithTargetPath Include="res\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>%(RecursiveDir)/res/%(Filename)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
   </ItemGroup>
 
   <PropertyGroup>

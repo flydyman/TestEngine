@@ -17,10 +17,17 @@ namespace TestEngine.Models
 
         public abstract void OnLoad();
         public abstract void OnUpdate();
+
+        public void ExplicitOnLoad()
+        {
+            OnLoad();
+            foreach (Node node in Children) node.ExplicitOnLoad();
+        }
+
         public void ExplicitDraw()
         {
             Draw();
-            if (Children.Count>0) foreach (Node node in Children) node.Draw();
+            if (Children.Count>0) foreach (Node node in Children) node.ExplicitDraw();
         }
         public abstract void Draw();
 

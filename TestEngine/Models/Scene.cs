@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TestEngine.Models
 {
-    public abstract class Scene : IDisposable
+    public class Scene : IDisposable
     {
         bool _isDisposed = false;
         public string Name {get;}
@@ -14,6 +14,11 @@ namespace TestEngine.Models
         public Scene(string name)
         {
             Name = name;
+        }
+
+        public void OnLoad()
+        {
+            MainNode.ExplicitOnLoad();
         }
 
         public void Draw()

@@ -5,7 +5,7 @@ namespace TestEngine
 {
     public class Shader : IDisposable
     {
-        int _handle;
+        public int _handle; // Made public for Texture2D to access
         int _fragmentShader;
         int _vertexShader;
         bool _isDisposed = false;
