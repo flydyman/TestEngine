@@ -12,4 +12,8 @@
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Resources\AtlasTexture2D.cs" />
+  </ItemGroup>
+
 </Project>

@@ -12,7 +12,7 @@ namespace DataTescting
         {
             Scene scene = new Scene("main");
             StaticImage2D img = new StaticImage2D();
-            Texture2D tex = new Texture2D("res/draw1.png");
+            Texture2D tex = new Texture2D("res/draw1.png", new Vector2i(32, 16), new Vector2i(0,1));
             img.AssignTexture(tex);
             img.Position = new Vector2i(100, 100);
             img.Scale = new Vector2(1.5f,1.5f);

@@ -4,14 +4,15 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using TestEngine.Interfaces;
 
 namespace TestEngine.Resources
 {
-    public class Texture2D : IDisposable
+    public class Texture2D : IDisposable, ITexture
     {
         bool _isDisposed = false;
         int _texture;
-        public Shader Shader {get; private set;}
+        public Shader Shader {get; set;}
         public int Width {get; private set;}
         public int Height {get; private set;}
         
@@ -68,7 +69,7 @@ void main()
 ";
 
 
-        public Texture2D(string filename)
+        public Texture2D(string filename, Vector2i? regionSize = null, Vector2i? regionOffset = null)
         {
             // Initialize shader
             if (Shader == null) InitializeShader();
@@ -85,24 +86,44 @@ void main()
             // TODO check how it works with other formats, f.e. BMP or PCX
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-
+            
             Image<Rgba32> img = Image.Load<Rgba32>(filename);
-            Width = img.Width;
-            Height = img.Height;
+            // Naturally, if you have regionSize==null, offset is null too
+            if (!regionSize.HasValue)
+            {
+                regionSize = new Vector2i(img.Width, img.Height);
+                regionOffset = new Vector2i(0, 0);
+            } else if (!regionOffset.HasValue)
+            {
+                regionOffset = new Vector2i(0, 0);
+            }
+            Width = regionSize.Value.X;
+            Height = regionSize.Value.Y;
 
-            byte[] data = new byte[img.Width * img.Height * 4];
-            img.CopyPixelDataTo(data);
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, img.Width, img.Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, data);
+            byte[] data = new byte[Width * Height * 4];
+            Image<Rgba32> region = new Image<Rgba32>(Width, Height);
+            int xR = 0;
+            for (int x = Width * regionOffset.Value.X; x < Width * regionOffset.Value.X +Width-1; x++)
+            {
+                int yR = 0;
+                for (int y = Height * regionOffset.Value.Y; y < Height * regionOffset.Value.Y +Height-1; y++)
+                {
+                    region[xR, yR] = img[x, y];
+                    yR++;
+                }
+                xR++;
+            }
+            region.CopyPixelDataTo(data);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, Width, Height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, data);
             GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
             // Unbind texture
             GL.BindTexture(TextureTarget.Texture2D, 0);
         }
 
-        public Texture2D(string filename, Shader shader): this(filename)
+        public Texture2D(string filename, Shader shader, Vector2i? regionSize = null, Vector2i? regionOffset = null): this(filename, regionSize, regionOffset)
         {
             Shader = shader;
-            //return this(filename);
         }
         
         private void InitializeShader()
