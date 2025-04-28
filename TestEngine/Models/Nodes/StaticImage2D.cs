@@ -8,8 +8,6 @@ namespace TestEngine.Models.Nodes
     {
         Texture2D? _texture;
 
-        //public Vector2 Position = new Vector2(0,0);
-        public Vector2 Scale = new Vector2(1,1);
         private int _vao;
         private int _vbo;
 
