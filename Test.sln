@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelHandler", "ModelHandler\ModelHandler.csproj", "{4CBFB5CE-3202-4BA3-BB7F-94243E9978F7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTescting", "DataTescting\DataTescting.csproj", "{801ADE9C-A3EE-4102-B6A3-24FD5080D54E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEngine", "TestEngine\TestEngine.csproj", "{6EC17DBF-4AE2-4D39-B223-BEC44C4342DF}"

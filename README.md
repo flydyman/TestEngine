@@ -12,7 +12,6 @@ Make sure packages is in system (Linux):
 
 # Solution structure
 - ``TestEngine`` - engine itself
-- ``ModelHandler`` - dunno WTF is that
 - ``DataTescing`` - example project, typo in name :/
 
 # Possible errors
