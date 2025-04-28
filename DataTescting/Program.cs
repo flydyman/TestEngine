@@ -10,6 +10,6 @@ Console.WriteLine("Hello, World!");
 
 using (Engine game = new Engine(800,600,"Oh, hi Mark"))
 {
-    new Example02(game);
+    new Example03(game);
     game.Run();
 }
