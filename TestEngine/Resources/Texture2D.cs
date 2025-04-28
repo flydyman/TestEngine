@@ -152,7 +152,7 @@ void main()
             if (Shader != null && Shader.IsCompiled)
             {
                 Shader.Use();
-                GL.Uniform2(_scaleLocation, scale.X, scale.Y);
+                GL.Uniform2(_scaleLocation, scale.X*Width, scale.Y*Height);
             }
         }
         

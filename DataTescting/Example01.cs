@@ -15,7 +15,7 @@ namespace DataTescting
             Texture2D tex = new Texture2D("res/draw1.png");
             img.AssignTexture(tex);
             img.Position = new Vector2i(100, 100);
-            img.Scale = new Vector2i(64,64);
+            img.Scale = new Vector2(1.5f,1.5f);
             scene.MainNode = img;
             engine.InvokeScene(scene);
         }
