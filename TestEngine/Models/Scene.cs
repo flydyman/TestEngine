@@ -9,6 +9,7 @@ namespace TestEngine.Models
     {
         bool _isDisposed = false;
         public string Name {get;}
+        // Let's global coordinates starts from MainNode - ???
         public Node MainNode {get;set;}
 
         public Scene(string name)

@@ -29,7 +29,7 @@ namespace TestEngine.Models
             Draw();
             if (Children.Count>0) foreach (Node node in Children) node.ExplicitDraw();
         }
-        public abstract void Draw();
+        protected abstract void Draw();
 
         public virtual void Dispose(bool disposed)
         {

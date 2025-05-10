@@ -13,8 +13,9 @@ namespace TestEngine.Models.Nodes
 
         private float[] _vertices;
         
-        public override void Draw()
+        protected override void Draw()
         {
+            
             if (IsVisible && IsActive)
             {
                 if (_texture != null)

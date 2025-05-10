@@ -22,7 +22,7 @@ namespace TestEngine.Models.Nodes
             } else Tiles = new List<TileEntity2D>();
         }
 
-        public override void Draw()
+        protected override void Draw()
         {
             // From here I need global coordinates
             throw new NotImplementedException();
